@@ -102,7 +102,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="level_id" class="col-md-3 control-label">Level</label>
+                                <label for="level_id" class="col-md-3 control-label">Kelas</label>
                                 <div class="col-md-9">
                                     <?php
                                     echo form_dropdown(

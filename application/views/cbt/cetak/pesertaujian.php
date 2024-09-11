@@ -53,7 +53,7 @@
                                     <span class="input-group-text">Level Kelas</span>
                                 </div>
                                 <?php
-                        $arrLevel[0] = 'Pilih Level Kelas';
+                        $arrLevel[0] = 'Pilih Kelas';
                         if ($setting->jenjang == "1") {
                             for ($i = 1; $i < 7; $i++) {
                                 $arrLevel[$i] = $i;

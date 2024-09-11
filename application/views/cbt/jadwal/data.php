@@ -693,7 +693,7 @@ if (isset($jadwal_ujian)) {
 
         opsiFilter.prepend("<option value='' " + selectedF + " disabled='disabled'>Filter berdasarkan:</option>");
         opsiMapel.prepend("<option value='' " + selectedM + " disabled='disabled'>Pilih mapel:</option>");
-        opsiLevel.prepend("<option value='' " + selectedL + " disabled='disabled'>Pilih level:</option>");
+        opsiLevel.prepend("<option value='' " + selectedL + " disabled='disabled'>Pilih kelas:</option>");
 
         function onChangeFilter(type) {
             if (type == '1') {

@@ -63,7 +63,7 @@
                     <div class="form-group">
                         <label for="level">Level User</label>
                         <select id="level" name="level" class="form-control select2" style="width: 100%!important">
-                            <option value="">Pilih Level</option>
+                            <option value="">Pilih kelas</option>
                             <?php foreach ($groups as $row) : ?>
                                 <option <?= $level->id === $row->id ? "selected" : "" ?>
                                         value="<?= $row->id ?>"><?= $row->name ?></option>

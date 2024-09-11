@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <?php if (count($mapel) == 0 && count($ekstra) == 0) : ?>
                         <div class="alert alert-default-warning align-content-center" role="alert">
-                            Tidak ada Mata Pelajaran diampu
+                            Tidak ada Mata Pelajaran dipilih
                             <br> Hubungi Admin
                         </div>
                     <?php endif; ?>

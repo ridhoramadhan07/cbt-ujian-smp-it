@@ -58,7 +58,7 @@
                         <?php endif; ?>
                         <tr>
                             <td>
-                                Level Kelas
+                                Kelas
                             </td>
                             <td>
                                 <?= $kelas->level ?>

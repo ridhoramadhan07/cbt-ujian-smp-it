@@ -49,8 +49,8 @@
                         </div>
                         <div class="col-md-2 col-6" id="by-level">
                             <div class="form-group">
-                                <label for="level">Level Kelas</label>
-                                <?php echo form_dropdown('level', $levels, $level_selected, 'id="level" class="form-control"'); ?>
+                                <label for="level">Kelas</label>
+                                <?php echo form_dropdown('kelas', $levels, $level_selected, 'id="level" class="form-control"'); ?>
                             </div>
                         </div>
                         <div class="col-md-2 col-4">
@@ -85,7 +85,7 @@
                                         Hari & Tanggal
                                     </th>
                                     <th class="text-center align-middle border">
-                                        Level Kelas
+                                        Kelas
                                     </th>
                                     <th class="text-center align-middle border">
                                         Jadwal / Mata Pelajaran
@@ -192,7 +192,7 @@
                 $('#tgl-sampai').addClass('d-none');
                 var jenis = opsiJenis.val();
                 var level = opsiLevel.val();
-                var url = base_url + 'cbtalokasi?jenis=' + jenis + '&level=' + level + '&filter=0';
+                var url = base_url + 'cbtalokasi?jenis=' + jenis + '&kelas=' + level + '&filter=0';
                 if (jenis != "" && level != "0") {
                     window.location.href = url;
                 }
@@ -238,7 +238,7 @@
             var fil = opsiFilter.val();
 
             var tglKosong = fil == '1' && (dari == "" || sampai == "");
-            var url = base_url + 'cbtalokasi?jenis=' + jenis + '&level=' + level + '&filter=' + opsiFilter.val() + '&dari=' + dari + '&sampai=' + sampai;
+            var url = base_url + 'cbtalokasi?jenis=' + jenis + '&kelas=' + level + '&filter=' + opsiFilter.val() + '&dari=' + dari + '&sampai=' + sampai;
             console.log(url);
             if (jenis != "" && level != "0" && !tglKosong) {
                 window.location.href = url;

@@ -81,7 +81,7 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                                     }
                                 }
 
-                                echo form_dropdown('level', $arrLevel, $bank->bank_level, 'id="select-level" class="form-control form-control-sm" data-placeholder="Pilih Level Kelas" required'); ?>
+                                echo form_dropdown('Kelas', $arrLevel, $bank->bank_level, 'id="select-level" class="form-control form-control-sm" data-placeholder="Pilih Kelas" required'); ?>
                             </div>
                         </div>
                         <div class="col-md-3 col-9">

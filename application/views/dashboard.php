@@ -1,11 +1,12 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper bg-white">
-    <section class="content-header p-0 d-flex align-items-end"
-             style="height: 400px; background: url('<?= base_url('assets/img/wall2.png') ?>')">
-        <div class="container-fluid pl-0 pr-0 pb-0 pt-4" style="background-color: rgba(255,255,255,0.7)">
+    <section class="content-header p-0 d-flex align-items-end">
+    <!-- style="height: 400px; background: url('<?= base_url('assets/img/wall2.png') ?>')"> -->
+        <div class="container-fluid pl-2 pr-2 pb-0 pt-5" style="background-color: rgba(255,255,255,0.7);">
             <div class="row m-0">
+                <!--  -->
                 <?php foreach ($info_box as $info) : ?>
-                    <div class="col-md-2 col-3">
+                    <div class="col-md-2 col-3" style="height: 6rem;">
                         <div class="shadow small-box bg-<?= $info->box ?>">
                             <div class="inner">
                                 <h5 class="mb-0"><b><?= $info->total; ?></b></h5>
@@ -134,7 +135,7 @@
                         </div>
                     </div>
                     <div class="card card-success my-shadow">
-                        <div class="card-header">
+                        <div class="card-header" style="background-color: #20c997;">
                             <div class="card-title">Aktifitas</div>
                             <div class="card-tools">
                                 <button type="button" onclick="hapusLogAktivitas()" class="btn btn-sm">
@@ -150,7 +151,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card card-danger my-shadow">
-                        <div class="card-header">
+                        <div class="card-header" style="background-color: #c92052; height: 3.4rem; align-content: center;">
                             <h4 class="card-title">Penilaian</h4>
                         </div>
                         <div class="card-body">
@@ -160,8 +161,8 @@
                                         <a href="<?= base_url() . $info->url ?>">
                                             <div class="info-box border p-1" style="min-height: 60px">
                                                 <div class="info-box-content p-1 text-danger">
-                                                    <span class="info-box-text"><?= $info->title; ?></span>
-                                                    <h5 class="info-box-number m-0"><?= $info->total; ?></h5>
+                                                    <span class="info-box-text" style="color: #c92052;"><?= $info->title; ?></span>
+                                                    <h5 class="info-box-number m-0" style="color: #c92052;"><?= $info->total; ?></h5>
                                                 </div>
                                             </div>
                                         </a>
@@ -171,10 +172,10 @@
                                     <a href="<?= base_url('cbttoken') ?>">
                                         <div class="info-box border p-1" style="min-height: 60px">
                                             <div class="info-box-content p-1 text-danger">
-                                                <span class="info-box-text">Token
+                                                <span class="info-box-text" style="color: #c92052;">Token
                                                     <small class="float-right d-none" id="interval">-- : -- : --</small></span>
                                                 <h5 class="info-box-number m-0"
-                                                    id="token-view"><?= $token->token != null ? $token->token : '- - - - - -' ?></h5>
+                                                    id="token-view" style="color: #c92052;"><?= $token->token != null ? $token->token : '- - - - - -' ?></h5>
                                             </div>
                                         </div>
                                     </a>

@@ -65,7 +65,7 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                         </div>
                         <div class="col-md-1 col-3">
                             <div class="form-group">
-                                <label>Level</label><br>
+                                <label>Kelas</label><br>
                                 <?php
                                 if ($setting->jenjang == "1") {
                                     for ($i = 1; $i < 7; $i++) {
@@ -81,7 +81,7 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                                     }
                                 }
 
-                                echo form_dropdown('Kelas', $arrLevel, $bank->bank_level, 'id="select-level" class="form-control form-control-sm" data-placeholder="Pilih Kelas" required'); ?>
+                                echo form_dropdown('level', $arrLevel, $bank->bank_level, 'id="select-level" class="form-control form-control-sm" data-placeholder="Pilih Kelas" required'); ?>
                             </div>
                         </div>
                         <div class="col-md-3 col-9">
@@ -134,6 +134,30 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                             </div>
                         </div>
                         <div class="col-12 col-md-5">
+                            <div class="card alert-default-secondary">
+                                <div class="card-body p-2">
+                                    <span><b>Soal Uraian/Essai</b></span>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Jml. Soal</label>
+                                                <input id="jml-essai" type='number' name='tampil_esai'
+                                                       class='form-control form-control-sm'
+                                                       value="<?= $bank->tampil_esai ?>" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Bobot %</label>
+                                                <input id="bobot-essai" type='number' name='bobot_esai' class='form-control form-control-sm'
+                                                    value="<?= $bank->bobot_esai ?>" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-12 col-md-5">
                             <div class="card alert-default-warning">
                                 <div class="card-body p-2">
                                     <span><b>Soal Ganda Kompleks</b></span>
@@ -158,11 +182,11 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="row">
-                        <div class="col-12 col-md-4">
+                        <!-- <div class="col-12 col-md-4">
                             <div class="card alert-default-danger">
                                 <div class="card-body p-2">
                                     <span><b>Soal Menjodohkan</b></span>
@@ -186,8 +210,8 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-md-4">
+                        </div> -->
+                        <!-- <div class="col-12 col-md-4">
                             <div class="card alert-default-success">
                                 <div class="card-body p-2">
                                     <span><b>Soal Isian Singkat</b></span>
@@ -211,32 +235,8 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="card alert-default-secondary">
-                                <div class="card-body p-2">
-                                    <span><b>Soal Uraian/Essai</b></span>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>Jml. Soal</label>
-                                                <input id="jml-essai" type='number' name='tampil_esai'
-                                                       class='form-control form-control-sm'
-                                                       value="<?= $bank->tampil_esai ?>" required/>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>Bobot %</label>
-                                                <input id="bobot-essai" type='number' name='bobot_esai'
-                                                       class='form-control form-control-sm'
-                                                       value="<?= $bank->bobot_esai ?>" required/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </div> -->
+                        
                     </div>
                     <div class="row">
                         <div class="col-md-4 col-6">
@@ -438,7 +438,7 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
             const bobotisian = valBobotIsian.val() === "" ? 0 : parseInt(valBobotIsian.val());
             const bobotessai = valBobotEssai.val() === "" ? 0 : parseInt(valBobotEssai.val());
 
-            totalBobot.text((bobotpg + bobotpp2 + bobotjodohkan + bobotisian + bobotessai) + '');
+            totalBobot.text((bobotpg + bobotessai) + '');
         }
 
         function onChangeValueJumlah() {
@@ -448,7 +448,7 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
             const jmlisian = valSoalIsian.val() === "" ? 0 : parseInt(valSoalIsian.val());
             const jmlessai = valSoalEssai.val() === "" ? 0 : parseInt(valSoalEssai.val());
 
-            totalSoal.text((jmlpg + jmlpp2 + jmljodohkan + jmlisian + jmlessai) + '');
+            totalSoal.text((jmlpg  + jmlessai) + '');
         }
 
         valBobotPg.on('change keyup', function () {

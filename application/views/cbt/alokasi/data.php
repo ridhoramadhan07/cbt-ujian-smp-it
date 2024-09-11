@@ -192,7 +192,7 @@
                 $('#tgl-sampai').addClass('d-none');
                 var jenis = opsiJenis.val();
                 var level = opsiLevel.val();
-                var url = base_url + 'cbtalokasi?jenis=' + jenis + '&kelas=' + level + '&filter=0';
+                var url = base_url + 'cbtalokasi?jenis=' + jenis + '&level=' + level + '&filter=0';
                 if (jenis != "" && level != "0") {
                     window.location.href = url;
                 }
@@ -238,7 +238,7 @@
             var fil = opsiFilter.val();
 
             var tglKosong = fil == '1' && (dari == "" || sampai == "");
-            var url = base_url + 'cbtalokasi?jenis=' + jenis + '&kelas=' + level + '&filter=' + opsiFilter.val() + '&dari=' + dari + '&sampai=' + sampai;
+            var url = base_url + 'cbtalokasi?jenis=' + jenis + '&level=' + level + '&filter=' + opsiFilter.val() + '&dari=' + dari + '&sampai=' + sampai;
             console.log(url);
             if (jenis != "" && level != "0" && !tglKosong) {
                 window.location.href = url;

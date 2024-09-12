@@ -3,10 +3,9 @@
 
 <!-- Main Footer -->
 <footer class="main-footer">
-    <strong>GarudaCBT</strong> v.<?= APP_VERSION ?>
+    <strong>KhiriaTest</strong>
     <div class="float-right d-none d-sm-inline-block">
-        <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-        <b>V.</b>3.0.5
+        <strong>Copyright &copy; <?= date("Y"); ?><a href="#">Khiria Legacy</a>.</strong>
     </div>
 </footer>
 

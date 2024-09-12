@@ -4,7 +4,6 @@
     <!-- style="height: 400px; background: url('<?= base_url('assets/img/wall2.png') ?>')"> -->
         <div class="container-fluid pl-2 pr-2 pb-0 pt-5" style="background-color: rgba(255,255,255,0.7);">
             <div class="row m-0">
-                <!--  -->
                 <?php foreach ($info_box as $info) : ?>
                     <div class="col-md-2 col-3" style="height: 6rem;">
                         <div class="shadow small-box bg-<?= $info->box ?>">

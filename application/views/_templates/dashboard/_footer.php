@@ -5,7 +5,7 @@
 <footer class="main-footer">
     <strong>KhiriaTest</strong>
     <div class="float-right d-none d-sm-inline-block">
-        <strong>Copyright &copy; <?= date("Y"); ?><a href="http://adminlte.io">Khiria Legacy</a>.</strong>
+        <strong>Copyright &copy; <?= date("Y"); ?><a href="#">Khiria Legacy</a>.</strong>
     </div>
 </footer>
 

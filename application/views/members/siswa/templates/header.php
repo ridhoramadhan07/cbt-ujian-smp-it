@@ -176,7 +176,7 @@ $display_logout = $this->uri->segment(2) == "penilaian" ? 'd-none' : '';
         </ul>
         <ul class="navbar-nav <?= $display_logout ?>">
             <li class="nav-item">
-                <button onclick="logout()" class="btn btn-danger btn-outline">
+                <button onclick="logout()" class="btn btn-outline" style="background-color: #c92052; color: white;">
                     <span class="d-none d-sm-inline-block mr-2">Logout</span><i class="fas fa-sign-out-alt"></i>
                 </button>
             </li>

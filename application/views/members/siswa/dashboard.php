@@ -16,7 +16,13 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <?php foreach ($menu as $m): ?>
+                                <button id="goForward">Kembali ke Halaman Depan</button>
+                                <script>
+                                    document.getElementById('goForward').addEventListener('click', function () {
+                                        window.history.forward();
+                                    });
+                                </script>
+                                <!-- <?php foreach ($menu as $m): ?>
                                     <div class="col-lg-2 col-sm-3 col-4 mb-3">
                                         <a href="<?= base_url($m->link) ?>">
                                             <figure class="text-center">
@@ -27,13 +33,13 @@
                                             </figure>
                                         </a>
                                     </div>
-                                <?php endforeach; ?>
+                                <?php endforeach; ?> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-12 col-md-7">
                     <div class="card card-success">
                         <div class="card-header">
@@ -46,11 +52,9 @@
                                 <div id="pengumuman">
                                 </div>
                                 <p id="loading-post" class="text-center d-none">
-                                    <br/><i class="fa fa-spin fa-circle-o-notch"></i> Loading....
+                                    <br /><i class="fa fa-spin fa-circle-o-notch"></i> Loading....
                                 </p>
-                                <div id="loadmore-post"
-                                     onclick="getPosts()"
-                                     class="text-center mt-4 loadmore d-none">
+                                <div id="loadmore-post" onclick="getPosts()" class="text-center mt-4 loadmore d-none">
                                     <div class="btn btn-default">Muat Timeline lainnya ...</div>
                                 </div>
                             </div>
@@ -66,13 +70,13 @@
                             <div class="card-tools">
                                 <button type="button" onclick="loadJadwal()" class="btn btn-sm">
                                     <i class="fa fa-sync text-white"></i> <span
-                                            class="d-none d-sm-inline-block ml-1 text-white">Reload</span>
+                                        class="d-none d-sm-inline-block ml-1 text-white">Reload</span>
                                 </button>
                             </div>
                         </div>
                         <div class="card-body">
                             <?php
-                            if ($kbms != null) :
+                            if ($kbms != null):
                                 if (count($jadwals) > 0):
                                     $no = 1;
                                     $arrIst = [];
@@ -88,38 +92,39 @@
                                     <div class="table-responsive">
                                         <table class="w-100 table">
                                             <tbody>
-                                            <?php
-                                            $jamMulai = new DateTime($kbms->kbm_jam_mulai);
-                                            $jamSampai = new DateTime($kbms->kbm_jam_mulai);
-                                            for ($i = 0; $i < $kbms->kbm_jml_mapel_hari; $i++) :
-                                                $jamke = $i + 1;
-                                                if (in_array($jamke, $arrIst)) :
-                                                    $jamSampai->add(new DateInterval('PT' . $arrDur[$jamke] . 'M'));
-                                                    ?>
-                                                    <tr class="jam" data-jamke="<?= $jamke ?>">
-                                                        <td class="align-middle" width="150">
-                                                            <?= $jamMulai->format('H:i') ?>
-                                                            - <?= $jamSampai->format('H:i') ?>
-                                                        </td>
-                                                        <td class="align-middle">ISTIRAHAT</td>
-                                                    </tr>
-                                                    <?php
-                                                    $jamMulai->add(new DateInterval('PT' . $arrDur[$jamke] . 'M'));
-                                                else :
-                                                    $jamSampai->add(new DateInterval('PT' . $kbms->kbm_jam_pel . 'M'));
-                                                    ?>
-                                                    <tr class="jam" data-jamke="<?= $jamke ?>">
-                                                        <td class="align-middle">
-                                                            <?= $jamMulai->format('H:i') ?>
-                                                            - <?= $jamSampai->format('H:i') ?>
-                                                        </td>
-                                                        <td class="align-middle">
-                                                            <?= $jadwals[$jamke]->kode != null ? $jadwals[$jamke]->kode : '--' ?>
-                                                        </td>
-                                                    </tr>
-                                                    <?php
-                                                    $jamMulai->add(new DateInterval('PT' . $kbms->kbm_jam_pel . 'M'));
-                                                endif; endfor; ?>
+                                                <?php
+                                                $jamMulai = new DateTime($kbms->kbm_jam_mulai);
+                                                $jamSampai = new DateTime($kbms->kbm_jam_mulai);
+                                                for ($i = 0; $i < $kbms->kbm_jml_mapel_hari; $i++):
+                                                    $jamke = $i + 1;
+                                                    if (in_array($jamke, $arrIst)):
+                                                        $jamSampai->add(new DateInterval('PT' . $arrDur[$jamke] . 'M'));
+                                                        ?>
+                                                        <tr class="jam" data-jamke="<?= $jamke ?>">
+                                                            <td class="align-middle" width="150">
+                                                                <?= $jamMulai->format('H:i') ?>
+                                                                - <?= $jamSampai->format('H:i') ?>
+                                                            </td>
+                                                            <td class="align-middle">ISTIRAHAT</td>
+                                                        </tr>
+                                                        <?php
+                                                        $jamMulai->add(new DateInterval('PT' . $arrDur[$jamke] . 'M'));
+                                                    else:
+                                                        $jamSampai->add(new DateInterval('PT' . $kbms->kbm_jam_pel . 'M'));
+                                                        ?>
+                                                        <tr class="jam" data-jamke="<?= $jamke ?>">
+                                                            <td class="align-middle">
+                                                                <?= $jamMulai->format('H:i') ?>
+                                                                - <?= $jamSampai->format('H:i') ?>
+                                                            </td>
+                                                            <td class="align-middle">
+                                                                <?= $jadwals[$jamke]->kode != null ? $jadwals[$jamke]->kode : '--' ?>
+                                                            </td>
+                                                        </tr>
+                                                        <?php
+                                                        $jamMulai->add(new DateInterval('PT' . $kbms->kbm_jam_pel . 'M'));
+                                                    endif;
+                                                endfor; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -136,13 +141,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 </div>
 
 <div class="modal fade" id="pengumumanModal" tabindex="-1" role="dialog" aria-labelledby="previewLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -159,7 +164,8 @@
                 <div id="isi-pengumuman"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times mr-2"></i>Tutup
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                        class="fa fa-times mr-2"></i>Tutup
                 </button>
             </div>
         </div>
@@ -182,10 +188,10 @@
                     <input type="hidden" id="id-post" name="id_post" value="">
                     <div class="input-group">
                         <input type="text" name="text" placeholder="Tulis komentar ..."
-                               class="form-control form-control-sm" required>
+                            class="form-control form-control-sm" required>
                         <span class="input-group-append">
-                                <button type="submit" class="btn btn-success btn-sm">Komentari</button>
-                            </span>
+                            <button type="submit" class="btn btn-success btn-sm">Komentari</button>
+                        </span>
                     </div>
                     <?= form_close() ?>
                 </div>
@@ -213,10 +219,10 @@
                     <input type="hidden" id="id-comment" name="id_comment" value="">
                     <div class="input-group">
                         <input type="text" name="text" placeholder="Tulis balasan ...."
-                               class="form-control form-control-sm" required>
+                            class="form-control form-control-sm" required>
                         <span class="input-group-append">
-                                <button type="submit" class="btn btn-success btn-sm">Balas</button>
-                            </span>
+                            <button type="submit" class="btn btn-success btn-sm">Balas</button>
+                        </span>
                     </div>
                     <?= form_close() ?>
                 </div>
@@ -231,12 +237,12 @@
 <script>
     let jadwalKbm;
     var arrIst = [];
-    var kelas = '<?=$siswa->id_kelas?>';
-    var kodeKelas = '<?=$siswa->kode_kelas?>';
+    var kelas = '<?= $siswa->id_kelas ?>';
+    var kodeKelas = '<?= $siswa->kode_kelas ?>';
     var pengumuman;
 
     var halaman = 0;
-    var idSiswa = "<?=$siswa->id_siswa?>";
+    var idSiswa = "<?= $siswa->id_siswa ?>";
 
     function createTime(d) {
         var date = new Date(d);
@@ -818,7 +824,7 @@
 
     function wrappTables() {
         $('table').each(function () {
-            if (! $(this).parents('.table-responsive').length) {
+            if (!$(this).parents('.table-responsive').length) {
                 $(this).wrap('<div class="table-responsive"></div>');
             }
         })

@@ -209,7 +209,7 @@
 		</li>
 		-->
         <li class="nav-item">
-            <div id="live-clock" class="text-right"></div>
+            <div id="live-clock" class="text-right" style="margin-right: 1rem;"></div>
         </li>
     </ul>
 

@@ -3,9 +3,9 @@
 
 <!-- Main Footer -->
 <footer class="main-footer">
-    <strong>Khiria Legacy</strong> v.<?= APP_VERSION ?>
+    <strong>KhiriaTest</strong>
     <div class="float-right d-none d-sm-inline-block">
-        <strong>Copyright &copy; <?= date("Y"); ?> <a href="http://adminlte.io">EduKhiria</a>.</strong>
+        <strong>Copyright &copy; <?= date("Y"); ?> <a href="http://adminlte.io">Khiria Legacy</a>.</strong>
     </div>
 </footer>
 

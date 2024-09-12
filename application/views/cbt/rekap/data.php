@@ -343,7 +343,7 @@ function my_array_unique($array, $keep_key_assoc = false)
                 success: function (respon) {
                     console.log(respon);
                     window.location.href = base_url + 'cbtrekap';
-                    /*
+                    
                     if (respon.rekap && respon.nilai > 0) {
                         swal.fire({
                             title: "Berhasil",
@@ -361,7 +361,7 @@ function my_array_unique($array, $keep_key_assoc = false)
                             icon: "error"
                         });
                     }
-                    */
+                    
                 },
                 error: function () {
                     swal.fire({

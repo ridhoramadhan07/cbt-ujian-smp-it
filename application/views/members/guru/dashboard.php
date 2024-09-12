@@ -1,26 +1,29 @@
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper bg-light">
-    <section class="content-header p-0 d-flex align-items-end"
-             style="height: 400px; background: url('<?= base_url('assets/img/wall2.png') ?>')">
-        <div class="container-fluid pl-0 pr-0 pb-0 pt-4" style="background-color: rgba(255,255,255,0.7)">
+<div class="content-wrapper bg-white">
+    <section class="content-header p-0 d-flex align-items-end">
+    <!-- style="height: 400px; background: url('<?= base_url('assets/img/wall2.png') ?>')"> -->
+        <div class="container-fluid pl-2 pr-2 pb-0 pt-5" style="background-color: rgba(255,255,255,0.7);">
             <div class="row m-0">
                 <?php foreach ($info_box as $info) : ?>
-                    <div class="col-md-2 col-3">
+                    <div class="col-md-2 col-3" style="height: 6rem;">
                         <div class="shadow small-box bg-<?= $info->box ?>">
                             <div class="inner">
                                 <h5 class="mb-0"><b><?= $info->total; ?></b></h5>
                                 <span><?= $info->title; ?></span>
                             </div>
                             <div class="icon">
-                                <i class="fa fa-<?= $info->icon ?>" style="font-size:40px; top: 10px"></i>
+                                <i class="fa fa-<?= $info->icon ?>" style="top: 5px"></i>
                             </div>
+                            <a href="<?= base_url() . $info->url ?>" class="small-box-footer">
+                                Detail <i class="fa fa-arrow-circle-right"></i>
+                            </a>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
         </div>
     </section>
-
+    <!-- Main content -->
     <section class="content mt-4">
         <div class="container-fluid">
             <div class="row">
@@ -98,7 +101,7 @@
                                                                                 - <?= $jamSampai->format('H:i') ?>
                                                                             </td>
                                                                             <td class="align-middle">
-                                                                                <?= $jadwals[$ky][$jamke]->kode != null ? $jadwals[$ky][$jamke]->kode : '--' ?>
+                                                                                <?= isset($jadwals[$ky][$jamke]) && $jadwals[$ky][$jamke]->kode != null ? $jadwals[$ky][$jamke]->kode : '--' ?>
                                                                             </td>
                                                                         </tr>
 
@@ -130,9 +133,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header">
+                    <div class="card card-success my-shadow">
+                        <div class="card-header" style="background-color: #20c997;">
                             <div class="card-title">Aktifitas</div>
+                            <div class="card-tools">
+                                <button type="button" onclick="hapusLogAktivitas()" class="btn btn-sm">
+                                    <i class="fa fa-trash text-white"></i>
+                                </button>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div id="log-list">
@@ -142,32 +150,34 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card card-danger my-shadow">
-                        <div class="card-header">
+                        <div class="card-header" style="background-color: #c92052; height: 3.4rem; align-content: center;">
                             <h4 class="card-title">Penilaian</h4>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <?php foreach ($ujian_box as $info) : ?>
                                     <div class="col-md-4 col-6" style="min-height: 60px">
-                                        <div class="info-box border p-1" style="min-height: 60px">
-                                            <div class="info-box-content p-1 text-danger">
-                                                <span class="info-box-text text-sm"><?= $info->title; ?></span>
-                                                <h5 class="info-box-number"><?= $info->total; ?></h5>
+                                        <a href="<?= base_url() . $info->url ?>">
+                                            <div class="info-box border p-1" style="min-height: 60px">
+                                                <div class="info-box-content p-1 text-danger">
+                                                    <span class="info-box-text" style="color: #c92052;"><?= $info->title; ?></span>
+                                                    <h5 class="info-box-number m-0" style="color: #c92052;"><?= $info->total; ?></h5>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 <?php endforeach; ?>
                                 <div class="col-md-4 col-6" style="min-height: 60px">
-                                    <div class="info-box border p-1" style="min-height: 60px">
-                                        <div class="info-box-content p-1 text-danger">
-                                            <span class="info-box-text text-sm">Token</span>
-                                            <div>
-                                                <h5 class="info-box-number"><span id="token-view"><?= $token->token != null ? $token->token : '- - - - - -' ?></span>
-                                                <button class="float-right btn btn-sm btn-default d-none" id="refresh-token"><i class="fa fa-refresh"></i> </button>
-                                                </h5>
+                                    <a href="<?= base_url('cbttoken') ?>">
+                                        <div class="info-box border p-1" style="min-height: 60px">
+                                            <div class="info-box-content p-1 text-danger">
+                                                <span class="info-box-text" style="color: #c92052;">Token
+                                                    <small class="float-right d-none" id="interval">-- : -- : --</small></span>
+                                                <h5 class="info-box-number m-0"
+                                                    id="token-view" style="color: #c92052;"><?= $token->token != null ? $token->token : '- - - - - -' ?></h5>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                             <hr>
@@ -177,17 +187,17 @@
                                 </div>
                                 <div class="col-12 table-responsive">
                                     <?php
+                                    //echo '<pre>';
+                                    //var_dump($kelas_ujian);
+                                    //echo '</pre>';
                                     $no = 1;
                                     $jadwal_ujian = $jadwals_ujian[date('Y-m-d')] ?? [];
                                     if (count($jadwal_ujian) > 0) : ?>
-                                        <table id="tbl-penilaian" class="table table-bordered">
+                                        <table id="tbl-penilaian" class="table table-bordered table-sm">
                                             <tr>
                                                 <th class="text-center align-middle">NO</th>
                                                 <th class="text-center align-middle">RUANG</th>
                                                 <th class="text-center align-middle">SESI</th>
-                                                <!--
-                                                <th class="text-center align-middle">JAM KE</th>
-                                                -->
                                                 <th class="text-center align-middle">MATA PELAJARAN</th>
                                                 <th class="text-center align-middle">PENGAWAS</th>
                                             </tr>
@@ -211,7 +221,9 @@
                                                                         count($peserta[$ruang][$sesi->sesi_id]) : 0;
                                                                     if ($bank_kelas['kelas_id'] != null && $cnt > 0) {
                                                                         $total_peserta += $cnt;
-                                                                        $badge_kelas .= ' <span class="badge badge-info">' . $kelases[$bank_kelas['kelas_id']] . ' ' . $cnt . ' siswa</span>';
+                                                                        //$badge_kelas .= ' <span class="badge badge-info">' . $kelases[$bank_kelas['kelas_id']] . ' ' . $cnt . ' siswa</span>';
+                                                                        $nama_kls = isset($kelases[$bank_kelas['kelas_id']]) ? $kelases[$bank_kelas['kelas_id']] : '- -';
+                                                                        $badge_kelas .= ' <span class="badge badge-info">' . $nama_kls . ' ' . $cnt . ' siswa</span>';
                                                                     }
                                                                 }
                                                             }
@@ -223,15 +235,7 @@
                                                                 <td class="text-center align-middle"><?= $no ?></td>
                                                                 <td class="text-center align-middle"><?= $sesi->nama_ruang ?></td>
                                                                 <td class="text-center align-middle"><?= $sesi->nama_sesi ?></td>
-                                                                <!--
-                                                                <td class="text-center align-middle"><?= $jadwal[0]->jam_ke ?></td>
-                                                                -->
-                                                                <td class="text-center align-middle"><?= $jadwal[0]->kode ?>
-                                                                    <!--
-                                                                    <br>
-                                                                    <?= $badge_kelas ?>
-                                                                    -->
-                                                                </td>
+                                                                <td class="text-center align-middle"><?= $jadwal[0]->kode ?></td>
                                                                 <td class="align-middle crop-text-table">
                                                                     <?php foreach ($id_guru as $ig) {
                                                                         echo isset($gurus[$ig]) ? '<p class="p-0 m-0">' . $gurus[$ig] . '</p>' : '';
@@ -239,7 +243,7 @@
                                                                 </td>
                                                             </tr>
                                                         <?php endif; endforeach; endforeach;
-                                                $no++; endforeach;?>
+                                                $no++; endforeach; ?>
                                         </table>
                                     <?php else: ?>
                                         <table class="w-100 table-bordered">
@@ -335,8 +339,9 @@
         </div>
     </div>
 </div>
-
 <script src="<?= base_url() ?>/assets/app/js/jquery.rowspanizer.js"></script>
+<script src="<?= base_url() ?>/assets/app/js/dashboard.js"></script>
+
 <script>
     let timerTokenView;
     let timerTokenRemaining, timerTokenOnGoing;
